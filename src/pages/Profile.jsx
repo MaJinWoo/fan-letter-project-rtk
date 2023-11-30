@@ -9,6 +9,7 @@ export default function Profile() {
   const [isEditMode, setIsEditMode] = useState(false);
   const dispatch = useDispatch();
   const { isLoading, isError, error } = useSelector((state) => state.user);
+  const { letters } = useSelector((state) => state.letters);
   const user = JSON.parse(localStorage.getItem("user"));
   const [newNickname, setNewNickname] = useState(user.nickname);
 
@@ -35,6 +36,8 @@ export default function Profile() {
                   nickname: newNickname,
                 };
                 dispatch(__changeProfile(newProfile));
+                const newLetter = { ...letters, nickname: newNickname };
+                dispatch();
                 setIsEditMode(!isEditMode);
               }}
             >
@@ -43,6 +46,9 @@ export default function Profile() {
                 value={newNickname}
                 onChange={(e) => setNewNickname(e.target.value)}
               />
+              <button type="button" onClick={() => setIsEditMode(!isEditMode)}>
+                취소
+              </button>
               <button type="submit">완료</button>
             </form>
           </div>
