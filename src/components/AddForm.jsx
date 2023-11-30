@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { __addLetters, __getLetters } from "../redux/modules/lettersSlice";
 
 export default function AddForm() {
-  const { user } = useSelector((state) => state.user);
+  const user = JSON.parse(localStorage.getItem("user"));
+
   const [body, setBody] = useState("");
   const [member, setMember] = useState("민지");
   const dispatch = useDispatch();
@@ -13,15 +14,19 @@ export default function AddForm() {
         onSubmit={(e) => {
           e.preventDefault();
           const newLetter = {
-            content: body,
             nickname: user.nickname,
+            content: body,
+            avatar: "",
             writedTo: member,
+            createdAt: "",
+            userId: user.userId,
           };
           dispatch(__addLetters(newLetter));
           dispatch(__getLetters());
           setBody("");
         }}
       >
+        <p>닉네임 : {user.nickname}</p>
         <textarea value={body} onChange={(e) => setBody(e.target.value)} />
         <button type="submit">등록하기</button>
         <select onChange={(e) => setMember(e.target.value)}>
