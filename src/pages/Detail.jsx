@@ -2,54 +2,52 @@ import React, { useEffect, useState } from "react";
 import Layout from "../layouts/Layout";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { __getLetters } from "../redux/modules/lettersSlice";
+import { __getUser } from "../redux/modules/userSlice";
 
 export default function Detail() {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const selectedLetter = JSON.parse(localStorage.getItem("selected letter"));
   const { id } = useParams();
-  const [canEdit, setCanEdit] = useState(false);
+  const dispatch = useDispatch();
   const [newContent, setNewContent] = useState("");
+  const { letters } = useSelector((state) => state.letters);
+  const selectedLetter = JSON.parse(localStorage.getItem("selected letter"));
 
-  const fetchData = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_FAN_LETTER_AUTH_URL}/user`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.accessToken}`,
-        },
-      }
-    );
-    console.log(response);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-  //*****add 하고 getletters 다시 해보기 /
+  const user = JSON.parse(localStorage.getItem("user"));
+  const selectedContent = letters.find((letter) => letter.id === id);
   const onUpdateBtnHandler = async () => {
-    axios.patch(
+    await axios.patch(
       `${process.env.REACT_APP_FAN_LETTER_SERVER_URL}/letters/${id}`,
       {
         content: newContent,
       }
     );
+    localStorage.setItem(
+      "selected letter",
+      JSON.stringify({ ...selectedLetter, content: newContent })
+    );
+    dispatch(__getLetters());
   };
 
-  // if (user.nickname !== filteredLetter.nickname) {
-  //   console.log("cannot edit");
-  // } else console.log("can edit");
   return (
     <div>
       <Layout>
-        <p>{selectedLetter.nickname}</p>
-        <p>{selectedLetter.content}</p>
-        <textarea
-          value={newContent}
-          onChange={(e) => setNewContent(e.target.value)}
-        ></textarea>
-        <button onClick={onUpdateBtnHandler}>수정</button>
+        {user.nickname === selectedLetter.nickname ? (
+          <div>
+            <p>{selectedLetter.nickname}</p>
+            <p>{selectedContent.content}</p>
+            <textarea
+              value={newContent}
+              onChange={(e) => setNewContent(e.target.value)}
+            ></textarea>
+            <button onClick={onUpdateBtnHandler}>수정</button>
+          </div>
+        ) : (
+          <div>
+            <p>{selectedLetter.nickname}</p>
+            <p>{selectedContent.content}</p>
+          </div>
+        )}
       </Layout>
     </div>
   );

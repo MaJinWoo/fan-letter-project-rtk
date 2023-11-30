@@ -8,6 +8,9 @@ const initialState = {
   isError: false,
   error: null,
 };
+// 로그인이 되면 로컬스토리지 세팅
+// 세팅 된 로컬 스토리지를 user에 세팅
+// => user <=> 로컬 스토리지
 
 export const __getUser = createAsyncThunk(
   "getUser",
@@ -117,6 +120,7 @@ export const userSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.isLogin = true;
+      state.user = action.payload;
     },
     [__loginUser.rejected]: (state, action) => {
       state.isLoading = false;

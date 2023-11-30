@@ -19,7 +19,7 @@ export default function AddForm() {
             content: body,
             avatar: "",
             writedTo: member,
-            createdAt: "",
+            createdAt: new Date(),
             userId: user.userId,
           };
           dispatch(__addLetters(newLetter));

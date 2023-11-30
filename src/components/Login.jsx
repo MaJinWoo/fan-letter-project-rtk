@@ -15,13 +15,13 @@ export default function Login({ setIsMember }) {
     <LoginWrapper>
       <Title>New Jeans Fan Letter</Title>
       <LoginForm
-        onSubmit={async (e) => {
+        onSubmit={(e) => {
           e.preventDefault();
           const newUser = {
             id: userId,
             password: userPassword,
           };
-          await dispatch(__loginUser(newUser));
+          dispatch(__loginUser(newUser));
           navigate("/home");
         }}
       >

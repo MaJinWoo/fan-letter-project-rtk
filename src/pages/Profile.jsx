@@ -3,20 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { __changeProfile, __getUser } from "../redux/modules/userSlice";
 import Layout from "../layouts/Layout";
+import { __getLetters } from "../redux/modules/lettersSlice";
 
 export default function Profile() {
   const { id } = useParams();
-  const [isEditMode, setIsEditMode] = useState(false);
-  const dispatch = useDispatch();
-  const { isLoading, isError, error } = useSelector((state) => state.user);
-  const { letters } = useSelector((state) => state.letters);
   const user = JSON.parse(localStorage.getItem("user"));
+
+  const [isEditMode, setIsEditMode] = useState(false);
   const [newNickname, setNewNickname] = useState(user.nickname);
 
-  console.log("profile page", user);
+  const dispatch = useDispatch();
+
   const editModeHandler = () => {
     setIsEditMode(!isEditMode);
   };
+
   return (
     <Layout>
       <div>
@@ -36,8 +37,7 @@ export default function Profile() {
                   nickname: newNickname,
                 };
                 dispatch(__changeProfile(newProfile));
-                const newLetter = { ...letters, nickname: newNickname };
-                dispatch();
+                dispatch(__getUser());
                 setIsEditMode(!isEditMode);
               }}
             >

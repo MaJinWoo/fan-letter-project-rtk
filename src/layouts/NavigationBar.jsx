@@ -1,9 +1,14 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { __getUser } from "../redux/modules/userSlice";
 
 export default function NavigationBar() {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const { user, isLoading } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   return (
     <NavigationWrapper>
       <StyledBtn onClick={() => navigate("/home")}>Home</StyledBtn>
@@ -15,6 +20,7 @@ export default function NavigationBar() {
         onClick={() => {
           // 로그아웃 로직
           localStorage.setItem("login status", "logout");
+          localStorage.removeItem("user", "selected letter");
           alert("로그아웃 되었습니다! 다시 로그인 해주세요.");
           navigate("/");
         }}

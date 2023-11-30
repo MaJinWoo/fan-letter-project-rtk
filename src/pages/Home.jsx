@@ -14,11 +14,11 @@ export default function Home() {
   const { user, isLoading, isError, error } = useSelector(
     (state) => state.user
   );
+
+  const loginStatus = localStorage.getItem("login status");
   useEffect(() => {
     dispatch(__getUser());
   }, []);
-
-  const loginStatus = localStorage.getItem("login status");
 
   if (isLoading) {
     return <div>로딩 중...</div>;

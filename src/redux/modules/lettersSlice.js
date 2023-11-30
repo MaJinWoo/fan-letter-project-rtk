@@ -3,6 +3,8 @@ import axios from "axios";
 
 const initialState = {
   letters: [],
+  isLetterLoading: false,
+  isLetterError: false,
   error: null,
 };
 
@@ -40,10 +42,20 @@ export const lettersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    [__getLetters.pending]: (state, action) => {
+      state.isLetterLoading = true;
+      state.isLetterError = false;
+    },
     [__getLetters.fulfilled]: (state, action) => {
+      state.isLetterLoading = false;
+      state.isLetterError = false;
+
       state.letters = action.payload;
     },
     [__getLetters.rejected]: (state, action) => {
+      state.isLetterLoading = false;
+      state.isLetterError = true;
+
       state.error = action.payload;
     },
   },
