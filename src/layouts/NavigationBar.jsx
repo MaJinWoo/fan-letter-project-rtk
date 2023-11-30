@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { __getUser } from "../redux/modules/userSlice";
 
 export default function NavigationBar() {
-  const { user, isLoading } = useSelector((state) => state.user);
+  const user = JSON.parse(localStorage.getItem("user"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

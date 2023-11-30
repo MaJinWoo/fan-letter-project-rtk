@@ -22,6 +22,8 @@ export default function Login({ setIsMember }) {
             password: userPassword,
           };
           dispatch(__loginUser(newUser));
+          localStorage.setItem("login status", "login");
+
           navigate("/home");
         }}
       >

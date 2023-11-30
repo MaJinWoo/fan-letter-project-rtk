@@ -21,7 +21,6 @@ export default function Detail() {
     setSelectedLetter(letters.find((letter) => letter.id === id));
     console.log(letters.find((letter) => letter.id === id));
   }, [isLetterLoading]);
-  console.log("isloading", isLetterLoading);
   if (isLetterLoading) {
     return <div>로딩 중...</div>;
   }

@@ -100,6 +100,7 @@ export const userSlice = createSlice({
     [__getUser.pending]: (state, action) => {
       state.isLoading = true;
       state.isError = false;
+      state.isLogin = false;
     },
     [__getUser.fulfilled]: (state, action) => {
       state.isLoading = false;
@@ -110,11 +111,14 @@ export const userSlice = createSlice({
     [__getUser.rejected]: (state, action) => {
       state.isLoading = false;
       state.isError = true;
+      state.isLogin = false;
+
       state.error = action.payload;
     },
     [__loginUser.pending]: (state, action) => {
       state.isLoading = true;
       state.isError = false;
+      state.isLogin = false;
     },
     [__loginUser.fulfilled]: (state, action) => {
       state.isLoading = false;

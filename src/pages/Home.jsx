@@ -16,10 +16,12 @@ export default function Home() {
   );
 
   const loginStatus = localStorage.getItem("login status");
+
   useEffect(() => {
     dispatch(__getUser());
   }, []);
 
+  console.log("user", user);
   if (isLoading) {
     return <div>로딩 중...</div>;
   }

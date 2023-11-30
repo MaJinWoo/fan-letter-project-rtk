@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __addLetters, __getLetters } from "../redux/modules/lettersSlice";
 import styled from "styled-components";
+import { __getUser } from "../redux/modules/userSlice";
 export default function AddForm() {
-  const user = JSON.parse(localStorage.getItem("user"));
+  // const user = JSON.parse(localStorage.getItem("user"));
 
   const [body, setBody] = useState("");
   const [member, setMember] = useState("민지");
+  const [nickname, setNickname] = useState("");
+  const user = JSON.parse(localStorage.getItem("user"));
   const dispatch = useDispatch();
+
+  console.log("addform", nickname);
   return (
     <FormWrapper>
       <h1>편지를 등록하세요!</h1>
