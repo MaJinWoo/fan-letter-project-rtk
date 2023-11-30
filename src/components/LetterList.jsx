@@ -10,15 +10,13 @@ export default function LetterList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { letters } = useSelector((state) => state.letters);
-
   useEffect(() => {
     dispatch(__getLetters());
   }, []);
-
   const filteredLetters = letters.filter(
     (letter) => letter.writedTo === activeMember.member
   );
-
+  console.log("home letters", letters);
   return (
     <ListWrapper>
       {filteredLetters.length === 0 ? (
