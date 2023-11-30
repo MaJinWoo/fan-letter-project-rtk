@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 export default function NavigationBar() {
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
   return (
-    <div>
-      <button onClick={() => navigate("/home")}>Home</button>
+    <NavigationWrapper>
+      <StyledBtn onClick={() => navigate("/home")}>Home</StyledBtn>
       {user?.nickname}님 안녕하세요!
-      <button onClick={() => navigate(`/profile/${user.id}`)}>프로필</button>
-      <button
+      <StyledBtn onClick={() => navigate(`/profile/${user.id}`)}>
+        프로필
+      </StyledBtn>
+      <StyledBtn
         onClick={() => {
           // 로그아웃 로직
           localStorage.setItem("login status", "logout");
@@ -17,7 +20,18 @@ export default function NavigationBar() {
         }}
       >
         로그아웃
-      </button>
-    </div>
+      </StyledBtn>
+    </NavigationWrapper>
   );
 }
+const NavigationWrapper = styled.div`
+  height: 30px;
+  font-size: 20px;
+`;
+const StyledBtn = styled.button`
+  width: 100px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+`;

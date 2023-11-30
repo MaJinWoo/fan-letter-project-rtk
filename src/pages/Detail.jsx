@@ -27,7 +27,7 @@ export default function Detail() {
   useEffect(() => {
     fetchData();
   }, []);
-
+  //*****add 하고 getletters 다시 해보기 /
   const onUpdateBtnHandler = async () => {
     axios.patch(
       `${process.env.REACT_APP_FAN_LETTER_SERVER_URL}/letters/${id}`,
