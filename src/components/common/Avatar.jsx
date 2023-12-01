@@ -11,10 +11,15 @@ export default function Avatar({ src, size }) {
 const AvatarFigure = styled.figure`
   ${(props) => {
     switch (props.size) {
+      case "profile":
+        return css`
+          width: 200px;
+          height: 200px;
+        `;
       case "large":
         return css`
-          width: 75px;
-          height: 75px;
+          width: 100px;
+          height: 100px;
         `;
       default:
         return css`

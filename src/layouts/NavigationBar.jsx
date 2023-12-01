@@ -12,15 +12,14 @@ export default function NavigationBar() {
   return (
     <NavigationWrapper>
       <StyledBtn onClick={() => navigate("/home")}>Home</StyledBtn>
-      {user?.nickname}님 안녕하세요!
+      {/* {user?.nickname}님 안녕하세요! */}
       <StyledBtn onClick={() => navigate(`/profile/${user.id}`)}>
         프로필
       </StyledBtn>
       <StyledBtn
         onClick={() => {
           // 로그아웃 로직
-          localStorage.setItem("login status", "logout");
-          localStorage.removeItem("user", "selected letter");
+          localStorage.clear();
           alert("로그아웃 되었습니다! 다시 로그인 해주세요.");
           navigate("/");
         }}

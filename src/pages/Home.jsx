@@ -11,25 +11,21 @@ import backgroundImg from "../assets/background-color2.jpg";
 export default function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, isLoading, isError, error } = useSelector(
-    (state) => state.user
-  );
+  const { isLoading, isError, error } = useSelector((state) => state.user);
 
-  const loginStatus = localStorage.getItem("login status");
+  const user = localStorage.getItem("user");
 
   useEffect(() => {
     dispatch(__getUser());
   }, []);
 
-  console.log("user", user);
   if (isLoading) {
     return <div>로딩 중...</div>;
   }
   if (isError) {
     console.log("error", error);
-    localStorage.setItem("login status", "logout");
   }
-  if (loginStatus === "login") {
+  if (user) {
     console.log("로그인 되었습니다.");
 
     return (
@@ -45,8 +41,8 @@ export default function Home() {
     );
   } else {
     console.log("다시 로그인 해주세요");
-    alert("로그아웃 되었습니다! 다시 로그인 해주세요.");
-    navigate("/");
+    // alert("로그아웃 되었습니다! 다시 로그인 해주세요.");
+    // navigate("/");
   }
 }
 

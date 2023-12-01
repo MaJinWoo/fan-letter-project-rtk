@@ -22,7 +22,7 @@ export default function AddForm() {
           const newLetter = {
             nickname: user.nickname,
             content: body,
-            avatar: "",
+            avatar: user.avatar,
             writedTo: member,
             createdAt: new Date(),
             userId: user.userId,

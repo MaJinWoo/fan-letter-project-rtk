@@ -31,14 +31,6 @@ export default function LetterList() {
               key={letter.id}
               onClick={() => {
                 navigate(`/detail/${letter.id}`);
-                localStorage.setItem(
-                  "selected letter",
-                  JSON.stringify({
-                    id: letter.id,
-                    nickname: letter.nickname,
-                    content: letter.content,
-                  })
-                );
               }}
             >
               <UserInfo>
@@ -73,8 +65,10 @@ const LetterWrapper = styled.li`
   gap: 12px;
   color: black;
   padding: 12px;
-  border: 1px solid black;
+  border: 5px solid lightgray;
   border-radius: 12px;
+  background-color: white;
+
   cursor: pointer;
   transition: all 0.2s;
   &:hover {
@@ -94,7 +88,7 @@ const NicknameAndDate = styled.div`
 `;
 const Content = styled.p`
   background-color: transparent;
-  border: 1px solid black;
+  border: 5px solid lightgray;
   border-radius: 12px;
   padding: 12px;
   margin-left: 62px;

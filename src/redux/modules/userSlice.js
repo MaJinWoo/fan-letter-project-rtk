@@ -4,7 +4,7 @@ import axios from "axios";
 const initialState = {
   user: null,
   isLogin: false,
-  isLoading: false,
+  isLoading: true,
   isError: false,
   error: null,
 };
@@ -59,7 +59,6 @@ export const __loginUser = createAsyncThunk(
         payload
       );
       localStorage.setItem("user", JSON.stringify(response.data));
-      localStorage.setItem("login status", "login");
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       console.log("error", error);
@@ -74,7 +73,7 @@ export const __changeProfile = createAsyncThunk(
       const user = JSON.parse(localStorage.getItem("user"));
       const response = await axios.patch(
         `${process.env.REACT_APP_FAN_LETTER_AUTH_URL}/profile`,
-        payload,
+        { avatar: payload.avatar, nickname: payload.nickname },
         {
           headers: {
             "Content-Type": "application/json",
@@ -82,7 +81,12 @@ export const __changeProfile = createAsyncThunk(
           },
         }
       );
-      const newData = { ...user, nickname: response.data.nickname };
+      console.log(response.data);
+      const newData = {
+        ...user,
+        avatar: response.data.avatar,
+        nickname: response.data.nickname,
+      };
       localStorage.setItem("user", JSON.stringify(newData));
     } catch (error) {}
   }
