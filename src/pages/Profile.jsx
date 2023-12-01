@@ -6,6 +6,8 @@ import Layout from "../layouts/Layout";
 import { __getLetters } from "../redux/modules/lettersSlice";
 import Avatar from "../components/common/Avatar";
 import styled from "styled-components";
+import backgroundImg from "../assets/background-color2.jpg";
+
 export default function Profile() {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -43,12 +45,11 @@ export default function Profile() {
   return (
     <Layout>
       <ProfileWrapper>
-        <p>{!isEditMode ? "프로필 관리" : "프로필 수정"}</p>
         {!isEditMode ? (
           <ProfileSection>
             <Avatar src={user.avatar} size="profile" />
             <p>{user.nickname}</p>
-            <button onClick={editModeHandler}>수정하기</button>
+            <StyledButton onClick={editModeHandler}>수정하기</StyledButton>
           </ProfileSection>
         ) : (
           <ProfileForm
@@ -66,15 +67,18 @@ export default function Profile() {
             <input type="file" onChange={(e) => onUploadHandler(e)} />
             <img src={imageSrc} />
             <label>새로운 닉네임</label>
-            <input
+            <StyledInput
               value={newNickname}
               onChange={(e) => setNewNickname(e.target.value)}
             />
             <ButtonSection>
-              <button type="button" onClick={() => setIsEditMode(!isEditMode)}>
+              <StyledButton
+                type="button"
+                onClick={() => setIsEditMode(!isEditMode)}
+              >
                 취소
-              </button>
-              <button type="submit">완료</button>
+              </StyledButton>
+              <StyledButton type="submit">완료</StyledButton>
             </ButtonSection>
           </ProfileForm>
         )}
@@ -86,12 +90,17 @@ export default function Profile() {
 const ProfileWrapper = styled.div`
   height: 70vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url(${backgroundImg});
+  background-size: cover;
+  min-height: 1000px;
 `;
 const ProfileSection = styled.section`
-  background-color: gray;
-  color: white;
+  background-color: white;
+  border: 5px solid lightgray;
+  border-radius: 12px;
   padding: 30px;
   font-size: 20px;
   display: flex;
@@ -103,8 +112,9 @@ const ProfileSection = styled.section`
   min-height: 400px;
 `;
 const ProfileForm = styled.form`
-  background-color: gray;
-  color: white;
+  background-color: white;
+  border: 5px solid lightgray;
+  border-radius: 12px;
   padding: 30px;
   font-size: 20px;
   display: flex;
@@ -118,4 +128,19 @@ const ProfileForm = styled.form`
 const ButtonSection = styled.div`
   display: flex;
   gap: 10px;
+`;
+const StyledButton = styled.button`
+  width: 100px;
+  font-size: 20px;
+  background-color: lightgray;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+`;
+
+const StyledInput = styled.input`
+  outline: none;
+  font-size: 20px;
+  border: none;
+  border-bottom: 2px solid lightgray;
 `;

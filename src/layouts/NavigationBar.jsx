@@ -12,7 +12,6 @@ export default function NavigationBar() {
   return (
     <NavigationWrapper>
       <StyledBtn onClick={() => navigate("/home")}>Home</StyledBtn>
-      {/* {user?.nickname}님 안녕하세요! */}
       <StyledBtn onClick={() => navigate(`/profile/${user.id}`)}>
         프로필
       </StyledBtn>
@@ -32,6 +31,8 @@ export default function NavigationBar() {
 const NavigationWrapper = styled.div`
   height: 30px;
   font-size: 20px;
+  display: flex;
+  justify-content: flex-end;
 `;
 const StyledBtn = styled.button`
   width: 100px;

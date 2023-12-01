@@ -42,11 +42,54 @@
     },
     {
       "nickname": "123123",
-      "content": "민지 화이팅~!",
+      "content": "abc",
       "writedTo": "민지",
-      "createdAt": "2023-12-01T03:49:08.595Z",
+      "createdAt": "2023-12-01T06:54:41.693Z",
       "userId": "jinwoo",
-      "id": "AAA8CNB"
+      "id": "B3Rlr1c"
+    },
+    {
+      "nickname": "123123",
+      "content": "abc",
+      "writedTo": "민지",
+      "createdAt": "2023-12-01T06:54:43.042Z",
+      "userId": "jinwoo",
+      "id": "Rfo0Zd9"
+    },
+    {
+      "nickname": "123123",
+      "content": "abcdefgagdsafasdfasdfasdfasdfasdfasdf",
+      "writedTo": "민지",
+      "createdAt": "2023-12-01T07:21:11.948Z",
+      "userId": "jinwoo",
+      "id": "is9IU_t"
+    },
+    {
+      "nickname": "jinuma",
+      "content": "abcdefg",
+      "avatar": null,
+      "writedTo": "민지",
+      "createdAt": "2023-12-01T07:29:43.450Z",
+      "userId": "jinu",
+      "id": "rFsqW9B"
+    },
+    {
+      "nickname": "jinuma",
+      "content": "abcdefggg",
+      "avatar": null,
+      "writedTo": "민지",
+      "createdAt": "2023-12-01T07:29:46.386Z",
+      "userId": "jinu",
+      "id": "e8dYO1b"
+    },
+    {
+      "nickname": "jinuma",
+      "content": "dddddd",
+      "avatar": null,
+      "writedTo": "민지",
+      "createdAt": "2023-12-01T07:29:47.995Z",
+      "userId": "jinu",
+      "id": "8aFQt6g"
     }
   ]
 }

@@ -19,12 +19,16 @@ export default function Signup({ setIsMember }) {
       <SignupForm
         onSubmit={(e) => {
           e.preventDefault();
+          if (!userId || !userPassword || !userNickname)
+            return alert("기입되지 않은 정보가 있습니다.");
+
           const newUser = {
             id: userId,
             password: userPassword,
             nickname: userNickname,
           };
           dispatch(__registerUser(newUser));
+          setIsMember(true);
         }}
       >
         <StyledInput
@@ -33,6 +37,7 @@ export default function Signup({ setIsMember }) {
           placeholder="아이디"
         />
         <StyledInput
+          type="password"
           value={userPassword}
           onChange={(e) => setUserPassword(e.target.value)}
           placeholder="비밀번호"

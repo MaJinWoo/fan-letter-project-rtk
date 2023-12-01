@@ -17,6 +17,8 @@ export default function Login({ setIsMember }) {
       <LoginForm
         onSubmit={(e) => {
           e.preventDefault();
+          if (!userId || !userPassword)
+            return alert("닉네임과 비밀번호를 모두 입력해주세요");
           const newUser = {
             id: userId,
             password: userPassword,

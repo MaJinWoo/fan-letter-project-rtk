@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import Header from "../components/Header";
 import styled from "styled-components";
-import backgroundImg from "../assets/background-color2.jpg";
 export default function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,8 +31,11 @@ export default function Home() {
       <>
         <Layout>
           <Container>
-            <Header />
-            <AddForm />
+            <StyledDiv>
+              <Header />
+              <AddForm />
+            </StyledDiv>
+
             <LetterList />
           </Container>
         </Layout>
@@ -41,18 +43,18 @@ export default function Home() {
     );
   } else {
     console.log("다시 로그인 해주세요");
-    // alert("로그아웃 되었습니다! 다시 로그인 해주세요.");
-    // navigate("/");
   }
 }
 
 const Container = styled.div`
-  background-image: url(${backgroundImg});
   background-size: cover;
   min-height: 1000px;
+`;
+const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   font-size: 20px;
+  padding-bottom: 20px;
 `;
