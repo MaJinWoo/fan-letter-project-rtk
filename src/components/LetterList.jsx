@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getFormattedDate } from "../util/date";
 import styled from "styled-components";
 import Avatar from "./common/Avatar";
-import letterImg from "../assets/memo.png";
+// import letterImg from "../assets/memo.png";
 
 export default function LetterList() {
   const activeMember = useSelector((state) => state.member);
@@ -52,12 +52,13 @@ export default function LetterList() {
 }
 const ListWrapper = styled.ul`
   background-color: transparent;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-items: center;
-  /* grid-template-rows: 1fr 1fr 1fr; */
+  margin-left: 20px;
+  margin-top: 40px;
   gap: 20px;
-  width: 500px;
   border-radius: 12px;
   padding: 12px;
 `;
@@ -67,10 +68,10 @@ const LetterWrapper = styled.li`
   flex-direction: column;
   gap: 12px;
   padding: 12px;
+  border: 3px solid black;
   border-radius: 12px;
-  background-image: url(${letterImg});
-  background-size: cover;
-  height: 310px;
+  background-color: white;
+  height: 200px;
   width: 350px;
   position: relative;
   cursor: pointer;
@@ -81,7 +82,7 @@ const LetterWrapper = styled.li`
 `;
 const UserInfo = styled.div`
   position: absolute;
-  left: 40px;
+  left: 30px;
   top: 20px;
   display: flex;
   gap: 12px;
@@ -96,11 +97,12 @@ const NicknameAndDate = styled.div`
 const Content = styled.p`
   position: absolute;
   top: 100px;
-  left: 30px;
+  left: 20px;
   background-color: transparent;
   border-radius: 12px;
   padding: 12px;
   width: 300px;
+  border: 1px solid black;
 
   /* margin-left: 62px; */
   white-space: nowrap;

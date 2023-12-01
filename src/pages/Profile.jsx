@@ -6,7 +6,7 @@ import Layout from "../layouts/Layout";
 import { __getLetters } from "../redux/modules/lettersSlice";
 import Avatar from "../components/common/Avatar";
 import styled from "styled-components";
-import backgroundImg from "../assets/background-color2.jpg";
+import backgroundImg from "../assets/newjeans.jpeg";
 
 export default function Profile() {
   const dispatch = useDispatch();

@@ -10,6 +10,7 @@ export default function Header() {
 }
 const Title = styled.h1`
   font: italic small-caps bold 100px cursive;
+  color: white;
   margin-top: 40px;
   text-align: center;
 `;

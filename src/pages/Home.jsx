@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import Header from "../components/Header";
 import styled from "styled-components";
+import backgroundImg from "../assets/newjeans.jpeg";
+
 export default function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,10 +33,8 @@ export default function Home() {
       <>
         <Layout>
           <Container>
-            <StyledDiv>
-              <Header />
-              <AddForm />
-            </StyledDiv>
+            <Header />
+            <AddForm />
 
             <LetterList />
           </Container>
@@ -49,12 +49,10 @@ export default function Home() {
 const Container = styled.div`
   background-size: cover;
   min-height: 1000px;
-`;
-const StyledDiv = styled.div`
+  background-image: url(${backgroundImg});
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   font-size: 20px;
-  padding-bottom: 20px;
 `;

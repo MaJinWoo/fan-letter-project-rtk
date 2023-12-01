@@ -11,9 +11,8 @@ import { __getUser } from "../redux/modules/userSlice";
 import styled from "styled-components";
 import Avatar from "../components/common/Avatar";
 import { getFormattedDate } from "../util/date";
-import backgroundImg from "../assets/background-color2.jpg";
 import letterImg from "../assets/memo.png";
-
+import backgroundImg from "../assets/newjeans.jpeg";
 export default function Detail() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -106,8 +105,8 @@ export default function Detail() {
   );
 }
 const DetailWrapper = styled.div`
-  /* background-image: url(${backgroundImg});
-  background-size: cover; */
+  background-image: url(${backgroundImg});
+  background-size: cover;
   min-height: 1000px;
 
   height: 70vh;
@@ -116,8 +115,9 @@ const DetailWrapper = styled.div`
   align-items: center;
 `;
 const SelectedLetterSection = styled.section`
-  background-image: url(${letterImg});
-  background-size: cover;
+  background-color: white;
+  border: 3px solid lightgray;
+  border-radius: 12px;
   font-size: 20px;
   display: flex;
   flex-direction: column;
@@ -137,19 +137,21 @@ const AvatarAndNickname = styled.div`
 const StyledTime = styled.time`
   position: absolute;
 
-  top: 60px;
+  top: 80px;
   right: 60px;
 `;
 const Content = styled.p`
   font-size: 24px;
   line-height: 30px;
   padding: 12px;
-  width: 400px;
+  width: 490px;
+  border: 1px solid black;
   border-radius: 12px;
   height: 200px;
   position: absolute;
-  left: 60px;
-  bottom: 200px;
+
+  left: 50px;
+  bottom: 150px;
 `;
 const EditSection = styled.div`
   font-size: 24px;
@@ -170,7 +172,7 @@ const StyledTextarea = styled.textarea`
   position: absolute;
   width: 490px;
 
-  left: 60px;
+  left: 50px;
   bottom: 150px;
 `;
 const ButtonSection = styled.div`
@@ -186,7 +188,7 @@ const ButtonSection = styled.div`
 const StyledButton = styled.button`
   width: 100px;
   font-size: 20px;
-  background-color: white;
+  background-color: lightgray;
   border: none;
   border-radius: 12px;
   cursor: pointer;

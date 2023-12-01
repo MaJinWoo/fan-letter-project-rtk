@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { __getUser } from "../redux/modules/userSlice";
@@ -29,14 +28,15 @@ export default function NavigationBar() {
   );
 }
 const NavigationWrapper = styled.div`
-  height: 30px;
+  height: 40px;
   font-size: 20px;
   display: flex;
   justify-content: flex-end;
+  background-color: lightgray;
 `;
 const StyledBtn = styled.button`
   width: 100px;
-  background-color: white;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   font-size: 20px;

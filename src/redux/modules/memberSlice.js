@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  member: "민지",
+  member: "MINJI",
 };
 
 const memberSlice = createSlice({

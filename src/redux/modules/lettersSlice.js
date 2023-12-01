@@ -13,7 +13,7 @@ export const __getLetters = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_FAN_LETTER_SERVER_URL}/letters`
+        `${process.env.REACT_APP_FAN_LETTER_SERVER_URL}/letters?_sort=createdAt&_order=desc`
       );
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
